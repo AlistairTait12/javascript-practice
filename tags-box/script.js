@@ -2,28 +2,30 @@
 let tagsContainer = document.getElementById('tagsContainer');
 let tagInputContainer = document.getElementById('tagInputContainer');
 let addButton = document.getElementById('addButton');
-let tagElements = Array.from(document.querySelectorAll('.tagElement'));
+let tagInput = document.getElementById('tagInput');
 
-tagElements.forEach(tag => {
-  tag.childNodes[1].addEventListener('click', removeTag);
-});
+addButton.addEventListener('click', addTagOnClick);
+
+function addTagOnClick() {
+  addTagToContainer(tagInput.value);
+}
+
+function removeTag(event) {
+  event.target.parentElement.remove();
+}
 
 function addTagToContainer(textString) {
   let button = document.createElement('button');
   button.classList.add('removeButton');
   button.innerHTML = 'x';
 
-  let span = document.createElement('span');
-  span.classList.add('tagElement');
+  let div = document.createElement('div');
+  div.classList.add('tagElement');
 
-  span.innerHTML = `#${textString} `;
+  div.innerHTML = `#${textString} `;
 
-  span.appendChild(button);
+  div.appendChild(button);
   button.addEventListener('click', removeTag);
 
-  tagsContainer.appendChild(span);
-}
-
-function removeTag(event) {
-  event.target.parentElement.remove();
+  tagsContainer.appendChild(div);
 }
