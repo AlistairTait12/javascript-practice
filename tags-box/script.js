@@ -3,8 +3,16 @@ let tagsContainer = document.getElementById('tagsContainer');
 let tagInputContainer = document.getElementById('tagInputContainer');
 let addButton = document.getElementById('addButton');
 let tagInput = document.getElementById('tagInput');
+let tagsHiddenInput = document.getElementById('tagsHiddenInput');
 
 addButton.addEventListener('click', addTagOnClick);
+
+tagInput.addEventListener('keypress', event => {
+  if (event.key == 'Enter') {
+    addTagOnClick();
+    tagInput.value = '';
+  }
+});
 
 function addTagOnClick() {
   addTagToContainer(tagInput.value);
