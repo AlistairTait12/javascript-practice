@@ -14,4 +14,4 @@ class ChordBuilder {
   }
 }
 
-console.log (ChordBuilder.build('c#'));
+export default ChordBuilder;
